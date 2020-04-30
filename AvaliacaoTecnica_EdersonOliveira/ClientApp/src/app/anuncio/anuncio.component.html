@@ -1,0 +1,47 @@
+<div class="head-spacing">
+    <h3>Anuncios</h3>
+</div>
+<div>
+    <button type="button" class="btn btn-success" [routerLink]="['/anuncios/adicionar']">Adicionar</button>
+    <button type="button" class="btn btn-info btn-spacing" [routerLink]="['/']">Voltar</button>
+</div>
+<br>
+<div *ngIf="anuncios">
+    <div class="table-responsive">
+        <table class='table table-striped table-bordered' aria-labelledby="tableLabel" *ngIf="anuncios">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Cor</th>
+                    <th scope="col">Combustivel</th>
+                    <th scope="col">Valor Compra</th>
+                    <th scope="col">Valor Venda</th>
+                    <th scope="col">Data Venda</th>
+                    <th scope="col">Vendido</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let anuncio of anuncios">
+                    <th scope="row">{{anuncio.id}}</th>
+                    <td>{{anuncio.nomeMarca}}</td>
+                    <td>{{anuncio.nomeModelo}}</td>
+                    <td>{{eCor[anuncio.cor]}}</td>
+                    <td>{{eTipoDeCombustivel[anuncio.tipoDeCombustivel]}}</td>
+                    <td>{{anuncio.valorDeCompra}}</td>
+                    <td>{{anuncio.valorDeVenda}}</td>
+                    <td>{{anuncio.dataDeVenda | date:'shortDate'}}</td>
+                    <td>{{anuncio.vendido?'Sim': 'Não'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning"
+                            [routerLink]="['/anuncios/alterar/',anuncio.id]">Editar</button>
+                        <button type="button" class="btn btn-danger btn-spacing"
+                            (click)="delete(anuncio.id)">Deletar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

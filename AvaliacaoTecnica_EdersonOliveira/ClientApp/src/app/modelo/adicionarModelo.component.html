@@ -1,0 +1,34 @@
+<div class="head-spacing">
+    <h3>Adicionar Modelo</h3>
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    <div class="cross-validation"
+        [class.cross-validation-error]="checkoutForm.errors?.identityRevealed && (checkoutForm.touched || checkoutForm.dirty)">
+        <div class="form-group">
+            <label for="nome">
+                Nome
+            </label>
+            <input class="form-control" id="nome" type="text" formControlName="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="ano">
+                Ano
+            </label>
+            <input class="form-control" id="ano" type="text" formControlName="ano" required>
+        </div>
+        <div class="form-group">
+            <label for="marcaId">
+                Marca?
+            </label>
+            <select class="form-control" id="marcaId" formControlName="marcaId" required>
+                <option *ngFor="let marca of marcas" [value]="marca.id"
+                    [label]="marca.nome"></option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-info btn-spacing" (click)="voltar()">Voltar</button>
+    </div>
+</form>

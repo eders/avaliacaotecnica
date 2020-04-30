@@ -1,0 +1,19 @@
+<div class="head-spacing">
+    <h3>Alterar Marca</h3>
+</div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+    <div class="cross-validation"
+        [class.cross-validation-error]="checkoutForm.errors?.identityRevealed && (checkoutForm.touched || checkoutForm.dirty)">
+        <div class="form-group">
+            <label for="nome">
+                Nome
+            </label>
+            <input class="form-control" id="nome" type="text" formControlName="nome" required>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-info btn-spacing" (click)="voltar()">Voltar</button>
+    </div>
+</form>
